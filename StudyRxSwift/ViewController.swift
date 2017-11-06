@@ -7,17 +7,35 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var usernameTextF: UITextField!
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    lazy var disposeBag = DisposeBag()
+    
+    let username = Variable("")
+    
+    let select = PublishSubject<IndexPath>()
+    
+    var usernameUsable: Observable<String>? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
 
 
