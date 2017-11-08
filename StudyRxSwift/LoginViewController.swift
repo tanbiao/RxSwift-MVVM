@@ -48,7 +48,6 @@ class LoginViewController: UIViewController {
             case let .ok(message):
                 
                 self.performSegue(withIdentifier: "data", sender: nil)
-                
                 self.showAlert(message: message)
                 
             case .empty:

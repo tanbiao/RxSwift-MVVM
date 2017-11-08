@@ -147,11 +147,25 @@ class  DataService
 
 extension DataService
 {
-    func requestData(parm : String)->Observable<Array<String>>
-    {
-        let dataSource = ["张三","李四","王麻子","张飞","关于","刘备"]
+    func getHeros(searchText:String) -> Observable<[Hero]> {
         
-        return Observable.just(dataSource, scheduler: MainScheduler.instance)
+        guard let heroPath = Bundle.main.path(forResource: "heros", ofType: "plist")  else
+        {
+            return Observable.just([Hero]())
+        }
+        
+        let herosArray = NSArray(contentsOfFile: heroPath) as! Array<[String:String]>
+        
+        var heros = [Hero]()
+        
+        for dict in herosArray {
+            
+            let hero = Hero(dict:dict)
+            
+            heros.append(hero)
+        }
+
+        return Observable.just(heros)
     }
 
 
